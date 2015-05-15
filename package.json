@@ -1,0 +1,31 @@
+{
+  "name": "RxJS-TicTacToe",
+  "version": "1.0.0",
+  "description": "RxJS sample application.",
+  "main": "index.js",
+  "scripts": {
+    "test": "karma start"
+  },
+  "keywords": [
+    "RxJS",
+    "JavaScript"
+  ],
+  "author": "Cal Belden",
+  "license": "ISC",
+  "devDependencies": {
+    "babelify": "^6.1.0",
+    "browserify": "^10.2.0",
+    "chai": "^2.3.0",
+    "gulp": "^3.8.11",
+    "karma": "^0.12.31",
+    "karma-browserify": "^4.1.2",
+    "karma-chai": "^0.1.0",
+    "karma-chrome-launcher": "^0.1.12",
+    "karma-mocha": "^0.1.10",
+    "mocha": "^2.2.5",
+    "vinyl-source-stream": "^1.1.0"
+  },
+  "dependencies": {
+    "jquery": "^2.1.4"
+  }
+}
