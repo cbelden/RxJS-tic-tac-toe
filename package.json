@@ -17,6 +17,7 @@
     "browserify": "^10.2.0",
     "chai": "^2.3.0",
     "gulp": "^3.8.11",
+    "hbsfy": "^2.2.1",
     "karma": "^0.12.31",
     "karma-browserify": "^4.1.2",
     "karma-chai": "^0.1.0",
@@ -26,6 +27,7 @@
     "vinyl-source-stream": "^1.1.0"
   },
   "dependencies": {
+    "handlebars": "^3.0.3",
     "jquery": "^2.1.4"
   }
 }
