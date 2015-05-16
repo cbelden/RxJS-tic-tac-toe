@@ -29,7 +29,7 @@ body {
 }
 
 .game-board .row .square[data-status="o"] {
-  background-image: url('../img/spindle.jpg');
+  background-image: url('../img/o.jpg');
   background-size: 100px 100px;
   background-repeat: no-repeat;
 }
