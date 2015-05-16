@@ -28,6 +28,8 @@
   },
   "dependencies": {
     "handlebars": "^3.0.3",
-    "jquery": "^2.1.4"
+    "jquery": "^2.1.4",
+    "lodash": "^3.8.0",
+    "rx": "^2.5.2"
   }
 }
