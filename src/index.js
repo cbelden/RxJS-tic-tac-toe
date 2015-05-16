@@ -1,11 +1,12 @@
 const Rx = require('rx');
+const Immutable = require('immutable');
 const $ = require('jquery');
 const _ = require('lodash');
 const gameBoardTemplate = require('../partials/game-board.handlebars');
 const scoreBoardTemplate = require('../partials/score-board.handlebars');
 
 
-const defaultGameState = { rows: [['', '', ''], ['', '', ''], ['', '', '']], player: 'x' };
+const defaultGameState = Immutable.fromJS({ rows: [['', '', ''], ['', '', ''], ['', '', '']], player: 'x' });
 
 
 // Observable of 'resets'
@@ -40,18 +41,17 @@ var gameStates = moves
 
     // Update game state as moves come in
     .scan(defaultGameState, (previousState, move) => {
-        if (previousState.winner) return previousState;
-        
-        let newPlayer = previousState.player == 'x' ? 'o' : 'x';
-        let newRows  = JSON.parse(JSON.stringify(previousState.rows));
-        newRows[move.position.row][move.position.col] = previousState.player;
+        if (previousState.get('winner')) return previousState;
 
-        return {
-            rows: newRows,
+        let prevPlayer = previousState.get('player');
+        let newPlayer = prevPlayer == 'x' ? 'o' : 'x';
+        let newState  = previousState.setIn(['rows', move.position.row, move.position.col], prevPlayer);
+
+        return newState.mergeDeep({
             player: newPlayer,
-            winner: checkWinner(newRows),
-            draw: checkDraw(newRows)
-        };
+            winner: checkWinner(newState.get('rows').toJS()),
+            draw: checkDraw(newState.get('rows').toJS())
+        });
     })
     .startWith(defaultGameState);
 
@@ -59,6 +59,7 @@ var gameStates = moves
 // Render as updates come in
 resets
     .flatMap(gameStates)
+    .map((state) => state.toJS())
     .subscribe(render);
 
 
@@ -66,6 +67,7 @@ resets
  * Renders the page.
  */
 function render(state) {
+    console.log(state)
     var board = gameBoardTemplate({
         rows: state.rows.map(addPositionData)
     });
