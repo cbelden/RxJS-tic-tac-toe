@@ -1,50 +1,58 @@
 html, body {
-  box-sizing: border-box;
-  font-family: sans-serif;
+    box-sizing: border-box;
+    font-family: sans-serif;
 }
 
 body {
-  padding: 60px 100px;
+    padding: 60px 100px;
 }
 
 .game-board {
-  margin: 100px auto;
+    margin: 100px auto;
 }
 
 .game-board .row .square {
-  border: 1px solid rgb(210, 210, 210);
-  height: 100px;
-  width: 100px;
-  display: inline-block;
-  cursor: pointer;
-  float: left;
-  margin-left: -1px;
-  margin-bottom: -1px;
+    border: 1px solid rgb(210, 210, 210);
+    height: 100px;
+    width: 100px;
+    display: inline-block;
+    cursor: pointer;
+    float: left;
+    margin-left: -1px;
+    margin-bottom: -1px;
 }
 
 .game-board .row .square[data-player="x"] {
-  background-image: url('../img/x.png');
-  background-size: 100px 100px;
-  background-repeat: no-repeat;
+    background-image: url('../img/x.png');
+    background-size: 100px 100px;
+    background-repeat: no-repeat;
 }
 
 .game-board .row .square[data-player="o"] {
-  background-image: url('../img/o.jpg');
-  background-size: 100px 100px;
-  background-repeat: no-repeat;
+    background-image: url('../img/o.jpg');
+    background-size: 100px 100px;
+    background-repeat: no-repeat;
 }
 
 .game-board .row .square[data-status="x"], .game-board .row .square[data-status="o"] {
-  cursor: default;
+    cursor: default;
 }
 
 .game-board .row::after {
-  content: " ";
-  clear: both;
-  display: table;
+    content: " ";
+    clear: both;
+    display: table;
 }
 
+.reset {
+    height: 30px;
+    width: 100px;
+    border-radius: 3px;
+    background-color: rgb(244, 244, 244);
+    border: 1px solid rgb(207, 207, 207);
+    font-size: 14px;
+}
 
 .game-board .row .square:hover {
-  background-color: rgb(210, 210, 210);
+    background-color: rgb(210, 210, 210);
 }
