@@ -22,13 +22,13 @@ let moves = Rx.Observable.fromEventPattern(
     (h) => $gameBoard.on('click', '.square', h),
     (h) => $gameBoard.off('click', '.square', h))
 
-    // Map each square click to a move with position/status information
+    // Map each square click to a move with position/player information
     .map((click) => {
         let $square = $(click.target);
 
         return {
             position: $square.data('position'),
-            status: $square.data('status')
+            player: $square.data('player')
         };
     });
 
@@ -37,7 +37,7 @@ let moves = Rx.Observable.fromEventPattern(
 var gameStates = moves
 
     // Ignore moves made on squares that are already filled
-    .filter((move) => !move.status)
+    .filter((move) => !move.player)
 
     // Update game state as moves come in
     .scan(defaultGameState, (previousState, move) => {
@@ -67,7 +67,6 @@ resets
  * Renders the page.
  */
 function render(state) {
-    console.log(state)
     var board = gameBoardTemplate({
         rows: state.rows.map(addPositionData)
     });
@@ -91,9 +90,10 @@ function render(state) {
 function addPositionData(squares, row) {
     return squares
         .map((item, col) => {
+            
             return {
                 position: JSON.stringify({ row, col }),
-                status: item
+                player: item
             }
     });
 }

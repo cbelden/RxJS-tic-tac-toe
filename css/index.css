@@ -22,13 +22,13 @@ body {
   margin-bottom: -1px;
 }
 
-.game-board .row .square[data-status="x"] {
+.game-board .row .square[data-player="x"] {
   background-image: url('../img/x.png');
   background-size: 100px 100px;
   background-repeat: no-repeat;
 }
 
-.game-board .row .square[data-status="o"] {
+.game-board .row .square[data-player="o"] {
   background-image: url('../img/o.jpg');
   background-size: 100px 100px;
   background-repeat: no-repeat;
